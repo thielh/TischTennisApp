@@ -1,5 +1,3 @@
-import './neuePlatte.js'
-import './zweiteSeite.html';
-
-// laden der Datei (noch nicht aufgerufen)
-import './neuePlatte.html';
+// hier: laden alles ui Dateien (noch nicht aufgerufen)
+import './templates.js'
+import './templates.html'
