@@ -6,16 +6,11 @@
     <br />
     <p>TischTennis Platten:</p>
     <ul class="list-group">
-      <li class="list-group-item">Platte 1</li>
-      <li class="list-group-item">Platte 2</li>
-      <li class="list-group-item">Platte 3</li>
+        {{#each eventsHelper}}
+          {{> startseite}}
+        {{/each}}
     </ul>
     <br />
-    <p>Anstehende Events:</p>
-    <ul class="list-group">
-      <li class="list-group-item">Event 1</li>
-      <li class="list-group-item">Event 2</li>
-      <li class="list-group-item">Event 3</li>
     </ul>
   </div>
   <br />
