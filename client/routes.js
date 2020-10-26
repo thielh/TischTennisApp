@@ -2,13 +2,13 @@
 // 1.) Route definieren 2.) welches Template er da aufrufen soll
 
   Router.route('/', function () {
-    this.render('/startseite');
+    this.render('startseite');
   });
 
   Router.route('/neuePlatte', function () {
-    this.render('/neuePlatte');
+    this.render('neuePlatte');
   });
 
   Router.route('/neuesEvent', function () {
-    this.render('/neuesEvent');
+    this.render('neuesEvent');
   });

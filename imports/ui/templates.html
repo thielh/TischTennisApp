@@ -6,50 +6,51 @@
     <br />
     <p>TischTennis Platten:</p>
     <ul class="list-group">
-        {{#each eventsHelper}}
-          {{> startseite}}
+        {{#each plattenHelper}}
+          <li>{{name}}, {{street}}, {{hNr}}, {{plz}}, {{access}}, {{condition}}</li>
         {{/each}}
     </ul>
     <br />
-    </ul>
   </div>
   <br />
 </template>
 
 <!-- NEUE PLATTE -->
 <template name="neuePlatte">
-  <div class="container-fluid">
-    <div class="form-group">
+  <form class="neuePlatteForm">
+    <div class="container-fluid">
+      <div class="form-group">
+        <br>
+        <label for="inputPlName">Name</label>
+        <input type="text" class="form-control" id="inputPlName" placeholder="Gib der TT Platte einen Namen">
+      </div>
+      <div class="form-group">
+        <label for="inputPlStreet">Standort</label>
+        <input type="text" class="form-control w-75" id="inputPlStreet" placeholder="Straße">
+        <input type="number" class="form-control w-25" min="1" id="inputPlHNr" placeholder="Hausnr">
+        <input type="number" class="form-control w-25" min="1" id="inputPlPLZ" placeholder="PLZ">
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="check1">
+        <label class="form-check-label" for="check1">Öffentlich zugänglich</label>
+      </div>
       <br>
-      <label for="inputPlName">Name</label>
-      <input type="text" class="form-control" id="inputPlName" placeholder="Gib der TT Platte einen Namen">
+      <label for="inputPlZustand">Zustand</label>
+      <div class="form-group">
+        <select class="custom-select w-50" id="inputPlZustand">
+          <option selected>Wähle...</option>
+          <option value="Gut">Gut</option>
+          <option value="Okay">Okay (spielbar)</option>
+          <option value="Nicht okay">Nicht okay (nicht spielbar)</option>
+        </select>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="inputPlStreet">Standort</label>
-      <input type="text" class="form-control w-75" id="inputPlStreet" placeholder="Straße">
-      <input type="number" class="form-control w-25" min="1" id="inputPlHNr" placeholder="Hausnr">
-      <input type="number" class="form-control w-25" min="1" id="inputPlPLZ" placeholder="PLZ">
+    <br />
+    <div class="container-fluid">
+      <button type="submit" class="btn btn-light" id="savePlButton">Neue Platte speichern</button>
     </div>
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="check1">
-      <label class="form-check-label" for="check1">Öffentlich zugänglich</label>
-    </div>
-    <br>
-    <label for="inputPlZustand">Zustand</label>
-    <div class="form-group">
-      <select class="custom-select w-50" id="inputEvPlatte">
-        <option selected>Wähle...</option>
-        <option value="1">Gut</option>
-        <option value="2">Okay (spielbar)</option>
-        <option value="3">Nicht okay (nicht spielbar)</option>
-      </select>
-    </div>
-  </div>
-  <br />
-  <div class="container-fluid">
-    <button type="button" class="btn btn-light" id="SavePlButton">Neue Platte speichern</button>
-  </div>
-  <br />
+    <br />
+  </form>
 </template>
 
 <!-- NEUES EVENT -->
@@ -90,7 +91,7 @@
   </div>
   <br />
   <div class="container-fluid">
-    <button type="button" class="btn btn-light" id="SaveEvButton">Event speichern</button>
+    <button type="button" class="btn btn-light" id="saveEvButton">Event speichern</button>
   </div>
   <br />
 </template>
