@@ -98,8 +98,8 @@
         </select>
       </div>
       <div class="form-group">
+        {{#each getPlatteData}}
         <label for="inputEvStreet">Treffpunkt</label>
-        {{#each plattenHelper2}}
         <input type="text" class="form-control w-75" id="inputEvStreet" placeholder="{{street}}" disabled="true">
         <input type="number" class="form-control w-25" id="inputEvHNr" min="1" placeholder="{{hNr}}" disabled="true">
         <input type="number" class="form-control w-25" id="inputPLZ" min="1" placeholder="{{plz}}" disabled="true">

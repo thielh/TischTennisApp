@@ -75,7 +75,7 @@ Template.neuesEvent.helpers({
 
 Template.neuesEvent.helpers({
     getPlatteData: function(){
-        return Platte.find(Session.get("selectedPlatte"))
+        return Platten.find(Session.get("selectedPlatte"))
     }
 })
 
