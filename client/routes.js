@@ -12,3 +12,7 @@
   Router.route('/neuesEvent', function () {
     this.render('neuesEvent');
   });
+
+  Router.route('/login', function () {
+    this.render('login');
+  });

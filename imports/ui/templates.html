@@ -2,17 +2,39 @@
 <template name="startseite">
   <div class="container-fluid">
     <br />
-    <p>Willkommen in der TischTennisApp! Du bist auf der Startseite :)</p>
+    <p><b>Anstehende Events:</b></p>
+    <div class="list-group">
+      {{#each eventsHelper}}
+      <div class="list-group-item list-group-item-action flex-column align-items-start" style="background-color: #f5f9fa">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{name}}</h5>
+        </div>
+        <p class="mb-1">{{date}} um {{time}}</p>
+        <p class="mb-1">{{description}}</p>
+        <p class="mb-1">Platte: {{platte}}</p>
+      </div>
+      <br>
+      {{/each}}
+    </div>
     <br />
-    <p>TischTennis Platten:</p>
-    <ul class="list-group">
+    <br />
+    <p><b>Tischtennis-Platten:</b></p>
+    <div class="list-group">
         {{#each plattenHelper}}
-          <li>{{name}}, {{street}}, {{hNr}}, {{plz}}, {{access}}, {{condition}}</li>
+        <div class="list-group-item list-group-item-action flex-column align-items-start" style="background-color: #f5f9fa">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{name}}</h5>
+            <medium>Erstellt am: {{createdAt}}</medium>
+          </div>
+          <p class="mb-1">Ort: {{street}} {{hNr}}, {{plz}}</p>
+          <p class="mb-1">Zugänglichkeit: {{access}}</p>
+          <p class="mb-1">Zustand: {{condition}}</p>
+        </div>
+        <br>
         {{/each}}
-    </ul>
-    <br />
-  </div>
-  <br />
+      </div>
+      <br />
+    </div>
 </template>
 
 <!-- NEUE PLATTE -->
@@ -55,45 +77,53 @@
 
 <!-- NEUES EVENT -->
 <template name="neuesEvent">
-  <div class="container-fluid">
-    <div class="form-group">
-      <br>
-        <label for="inputEvName">Name</label>
-        <input type="text" class="form-control" id="inputEvName" placeholder="Gib deinem Event einen aussagekräftigen Namen">
-    </div>
+  <form class="neuesEventForm">
+    <div class="container-fluid">
       <div class="form-group">
-        <label for="inputEvDescription">Beschreibung</label>
-        <input type="text" class="form-control" rows="3" id="inputEvDescription" placeholder="Beschreibe das Event in ein paar kurzen Sätzen..">
+        <br>
+          <label for="inputEvName">Name</label>
+          <input type="text" class="form-control" id="inputEvName" placeholder="Gib deinem Event einen aussagekräftigen Namen">
+      </div>
+        <div class="form-group">
+          <label for="inputEvDescription">Beschreibung</label>
+          <input type="text" class="form-control" rows="3" id="inputEvDescription" placeholder="Beschreibe das Event in ein paar kurzen Sätzen..">
+      </div>
+      <label for="inputEvPlatte">Platte</label>
+      <div class="form-group">
+        <select class="custom-select w-75" id="inputEvPlatte">
+          <option selected disabled>TT Platte auswählen..</option>
+          {{#each plattenHelper2}}
+          <option value="{{name}}">{{name}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="inputEvStreet">Treffpunkt</label>
+        <input type="text" class="form-control w-75" id="inputEvStreet" placeholder="Straße" disabled="true">
+        <input type="number" class="form-control w-25" id="inputEvHNr" min="1" placeholder="Hausnr" disabled="true">
+        <input type="number" class="form-control w-25" id="inputPLZ" min="1" placeholder="PLZ" disabled="true">
+      </div>
+      <div class="form-group">
+        <label for="inputEvDate">Datum</label>
+        <input type="date" class="form-control w-25" id="inputEvDate">
+      </div>
+      <div class="form-group">
+        <label for="inputEvTime">Uhrzeit</label>
+        <input type="time" class="form-control w-25" id="inputEvTime">
+      </div>
     </div>
-    <label for="inputEvPlatte">Platte</label>
-    <div class="form-group">
-      <select class="custom-select w-75" id="inputEvPlatte">
-        <option selected>TT Platte auswählen..</option>
-        <option value="1">Platte1</option>
-        <option value="2">Platte2</option>
-        <option value="3">Platte2</option>
-      </select>
+    <br />
+    <div class="container-fluid">
+      <button type="submit" class="btn btn-light" id="saveEvButton">Event speichern</button>
     </div>
-    <div class="form-group">
-      <label for="inputEvStreet">Treffpunkt</label>
-      <input type="text" class="form-control w-75" id="inputEvStreet" placeholder="Straße" disabled="true">
-      <input type="number" class="form-control w-25" id="inputEvHNr" min="1" placeholder="Hausnr" disabled="true">
-      <input type="number" class="form-control w-25" id="inputPLZ" min="1" placeholder="PLZ" disabled="true">
-    </div>
-    <div class="form-group">
-      <label for="inputEvDate">Datum</label>
-      <input type="date" class="form-control w-25" id="inputEvDate">
-    </div>
-    <div class="form-group">
-      <label for="inputEvTime">Uhrzeit</label>
-      <input type="time" class="form-control w-25" id="inputEvTime">
-    </div>
-  </div>
-  <br />
-  <div class="container-fluid">
-    <button type="button" class="btn btn-light" id="saveEvButton">Event speichern</button>
-  </div>
-  <br />
+    <br />
+  </form>
 </template>
 
+<!-- STARTSEITE -->
+<template name="login">
+  <div class="container-fluid">
+    <p>{{> loginButtons}}</p>
+  </div>
 
+</template>

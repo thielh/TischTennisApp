@@ -8,14 +8,24 @@ import '../api/events.js';
 
 
     Meteor.subscribe('plattenDB');
+    Meteor.subscribe('eventsDB');
 
     // Get all Events & Platten from MongoDB
-    
+
     Template.startseite.helpers({
         plattenHelper: function(){
             return Platten.find();
         }
     })
+
+    Template.startseite.helpers({
+        eventsHelper: function(){
+            return Events.find();
+        }
+    })
+
+//// NEUE PLATTE
+
 
     Template.neuePlatte.events({
         'submit .neuePlatteForm': function(event) {
@@ -40,12 +50,11 @@ import '../api/events.js';
                 plz : plzPl,
                 access : accessPl,
                 condition : conditionPl,
-
                 createdAt : new Date()
             });
 
-            event.target.namePl ="";
-            event.target.streetPl ="";
+            // event.target.namePl ="";
+            // event.target.streetPl ="";
             // event.target.hNrPl ="";
             // event.target.plzPl ="";
             // event.target.checkBox = false;
@@ -55,7 +64,38 @@ import '../api/events.js';
         }
     });
 
-
-//// NEUE PLATTE
-
 //// NEUES EVENT
+
+Template.neuesEvent.helpers({
+    plattenHelper2: function(){
+        return Platten.find();
+    }
+})
+
+
+Template.neuesEvent.events({
+    
+    'submit .neuesEventForm': function(event) {
+        var nameEv = event.target.inputEvName.value;
+        var descriptionEv = event.target.inputEvDescription.value;
+        var platteEv = event.target.inputEvPlatte.value;
+        var dateEv = event.target.inputEvDate.value;
+        var timeEv = event.target.inputEvTime.value;
+
+        console.log(nameEv, descriptionEv, platteEv, dateEv, timeEv);
+
+        // fetchAddressPlatte = Platten.find({ name : platteEv }).fetch();
+        // console.log(fetchAddressPlatte);
+
+        Events.insert({
+            name : nameEv,
+            description : descriptionEv,
+            platte : platteEv,
+            date : dateEv,
+            time : timeEv,
+            createdAt : new Date()
+        });
+
+        return false;
+    }
+});

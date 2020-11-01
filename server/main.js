@@ -9,3 +9,7 @@ Meteor.startup(() => {
 Meteor.publish('plattenDB', function() {
   return Platten.find();
 });
+
+Meteor.publish('eventsDB', function() {
+  return Events.find();
+});
