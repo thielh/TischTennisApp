@@ -73,8 +73,21 @@ Template.neuesEvent.helpers({
 })
 
 
+Template.neuesEvent.helpers({
+    getPlatteData: function(){
+        return Platte.find(Session.get("selectedPlatte"))
+    }
+})
+
+// wenn ich die Platte auswähle zieht er mir die ID zu dieser Platte
 Template.neuesEvent.events({
     
+    'change #inputEvPlatte': function(event) {
+        var newValue = $(event.target).val();
+        Session.set("selectedPlatte", newValue);
+        console.log(newValue);
+    },
+
     'submit .neuesEventForm': function(event) {
         var nameEv = event.target.inputEvName.value;
         var descriptionEv = event.target.inputEvDescription.value;
@@ -83,7 +96,7 @@ Template.neuesEvent.events({
         var timeEv = event.target.inputEvTime.value;
 
         console.log(nameEv, descriptionEv, platteEv, dateEv, timeEv);
-
+        
         // fetchAddressPlatte = Platten.find({ name : platteEv }).fetch();
         // console.log(fetchAddressPlatte);
 
@@ -98,4 +111,7 @@ Template.neuesEvent.events({
 
         return false;
     }
+
+
+
 });

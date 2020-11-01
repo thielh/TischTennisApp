@@ -93,15 +93,17 @@
         <select class="custom-select w-75" id="inputEvPlatte">
           <option selected disabled>TT Platte auswählen..</option>
           {{#each plattenHelper2}}
-          <option value="{{name}}">{{name}}</option>
+          <option value="{{_id}}">{{name}}</option>
           {{/each}}
         </select>
       </div>
       <div class="form-group">
         <label for="inputEvStreet">Treffpunkt</label>
-        <input type="text" class="form-control w-75" id="inputEvStreet" placeholder="Straße" disabled="true">
-        <input type="number" class="form-control w-25" id="inputEvHNr" min="1" placeholder="Hausnr" disabled="true">
-        <input type="number" class="form-control w-25" id="inputPLZ" min="1" placeholder="PLZ" disabled="true">
+        {{#each plattenHelper2}}
+        <input type="text" class="form-control w-75" id="inputEvStreet" placeholder="{{street}}" disabled="true">
+        <input type="number" class="form-control w-25" id="inputEvHNr" min="1" placeholder="{{hNr}}" disabled="true">
+        <input type="number" class="form-control w-25" id="inputPLZ" min="1" placeholder="{{plz}}" disabled="true">
+        {{/each}}
       </div>
       <div class="form-group">
         <label for="inputEvDate">Datum</label>
@@ -120,10 +122,32 @@
   </form>
 </template>
 
-<!-- STARTSEITE -->
+<!-- LOGIN -->
 <template name="login">
   <div class="container-fluid">
+    <br>
     <p>{{> loginButtons}}</p>
+    <h5>oder erstelle einen neuen User:</h5>
+    <form class="register">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+      <p><input type="submit" value="Registrieren" class="btn btn-light btn-sm"></p>
+  </form>
   </div>
+</template>
 
+<template name="register">
+  <h2>Register</h2>
+  <form class="register">
+      <p>Email: <input type="email" name="email"></p>
+      <p>Password: <input type="password" name="password"></p>
+      <p><input type="submit" value="Register"></p>
+  </form>
 </template>
