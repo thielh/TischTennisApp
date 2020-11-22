@@ -1,0 +1,59 @@
+<template name="startseite">
+    {{#if currentUser}}
+    <!-- EVENTS -->
+    <div class="container-fluid">
+      <br />
+      <h5>Anstehende Events:</h5>
+      <div class="list-group">
+        {{#each eventsHelper}}
+        <div class="oneEvent">
+            <div class="list-group-item list-group-item-action flex-column align-items-start" href="/editEvent" style="background-color: #f5f9fa">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{name}} </h5>
+                <!-- <i class="fas fa-edit" style="color: #587e8d"></i>-->
+                {{#if admin}}
+                <a href="/startseite"><button type="button" id="deleteEvent" class="btn btn-danger btn-lg"><i class="far fa-trash-alt fa-2x"></i></button></a>
+                {{/if}}
+            </div>
+            <p class="mb-1"><b>Wann?</b> {{date}} um {{time}}</p>
+            {{#each getPlatteById platteID}}
+            <p class="mb-1"><b>Wo?</b> Platte {{name}}, {{street}} {{hNr}}, {{plz}} Hannover</p>
+            {{/each}}
+            <p class="mb-1">{{description}}</p>
+            <p style="color: #587e8d"><small>erstellt von <u>{{username}}</u> ({{email}})</small></p>
+            <input type="checkbox" id="toggle-teilnehmen"> Ich nehme teil!
+        </div>
+      </div>
+      <br>
+      {{/each}}
+      </div>
+      <br />
+      <br />
+
+      <!-- PLATTEN-->
+      <h5>Tischtennis-Platten:</h5>
+      <div class="list-group">
+          {{#each plattenHelper}}
+          <div class="list-group-item list-group-item-action flex-column align-items-start" style="background-color: #f5f9fa">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{name}} </h5> 
+                  <!-- <i class="fas fa-edit" style="color: #587e8d"></i>-->
+              {{#if admin}}
+              <a href="/startseite"><button type="button" id="deletePlatte" class="btn btn-danger btn-lg"><i class="far fa-trash-alt fa-2x"></i></button></a>
+              {{/if}}
+            </div>
+            <p class="mb-1">Ort: {{street}} {{hNr}}, {{plz}} Hannover</p>
+            <p class="mb-1">Anzahl Platten: {{count}} | Zustand: {{condition}}</p>
+            <p style="color: #587e8d"><small>erstellt von <u>{{username}}</u> ({{email}})</small></p>
+            <input type="checkbox" id="toggle-teilnehmen"> Ich nehme teil!
+          </div>
+          <br>
+          {{/each}}
+        </div>
+        <br />
+      </div>
+      {{else}}
+        {{> notloggedin}}
+      {{/if}}
+  </template>
+

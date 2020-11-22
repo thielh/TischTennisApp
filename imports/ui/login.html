@@ -1,0 +1,30 @@
+<!-- LOGIN / REGISTER -->
+
+<template name="login">
+    {{#if currentUser}}
+    <div class="container-fluid">
+        <br>
+        <button class="btn btn-danger" id="logoutButton">Logout</button>
+    </div>
+    {{else}}
+        <div class="container-fluid">
+            <br>
+            <div class="login-modal">
+              {{> atForm}}
+              <!-- {{> loginButtons}} -->
+            </div>
+          </div>
+    {{/if}}
+</template>
+
+
+
+<!-- IF NOT LOGGED IN -->
+
+<template name="notloggedin">
+    <div class="container-fluid">
+        <br>
+        <p>Du bist nicht eingeloggt. Bitte log dich ein oder melde dich an. :) </p>
+        <a href="/"><button type="button" class="btn btn-light"> Login / Anmelden </button></a>
+    </div>
+</template>

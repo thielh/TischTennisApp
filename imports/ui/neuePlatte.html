@@ -1,0 +1,53 @@
+<template name="neuePlatte">
+    {{#if admin}}
+        {{#if currentUser}}
+        <form class="neuePlatteForm">
+        <div class="container-fluid">
+            <div class="form-group">
+            <br>
+            <label for="inputPlName">Name</label>
+            <input type="text" class="form-control" id="inputPlName" placeholder="Gib der TT Platte einen Namen">
+            </div>
+            <div class="form-group">
+            <label for="inputPlStreet">Standort</label>
+            <input type="text" class="form-control w-75" id="inputPlStreet" placeholder="Straße">
+            <input type="number" class="form-control w-25" min="1" id="inputPlHNr" placeholder="Hausnr">
+            <input type="number" class="form-control w-25" min="1" id="inputPlPLZ" placeholder="PLZ">
+            </div>
+            <label for="inputPlCount">Anzahl Platten am Standort</label>
+            <div class="form-group">
+            <select class="custom-select w-50" id="inputPlCount">
+                <option value ="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            </div>
+            <br>
+            <label for="inputPlZustand">Zustand</label>
+            <div class="form-group">
+            <select class="custom-select w-50" id="inputPlZustand">
+                <option selected>Wähle...</option>
+                <option value="Gut">Gut</option>
+                <option value="Okay">Okay (spielbar)</option>
+                <option value="Nicht okay">Nicht okay (nicht spielbar)</option>
+            </select>
+            </div>
+        </div>
+        <br />
+        <div class="container-fluid">
+            <button type="submit" class="btn btn-light" id="savePlButton">Neue Platte speichern</button>
+        </div>
+        <br />
+        </form>
+        {{else}}
+            {{> notloggedin}}
+        {{/if}}
+    {{else}}
+    <div class="container-fluid">
+        <br>
+        <p>Nur Admins können neue Platten hinzufügen. <br> Für mehr Infos wende dich bitte an <a href="">support@tischtennishannover.de</a> ! :)</p>
+    </div>
+    {{/if}}
+  </template>
