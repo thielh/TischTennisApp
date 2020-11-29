@@ -12,7 +12,7 @@
                 <h5 class="mb-1">{{name}} </h5>
                 <!-- <i class="fas fa-edit" style="color: #587e8d"></i>-->
                 {{#if admin}}
-                <a href="/startseite"><button type="button" id="deleteEvent" class="btn btn-danger btn-lg"><i class="far fa-trash-alt fa-2x"></i></button></a>
+                <a href="/startseite"><button type="button" id="deleteEvent" class="btn btn-danger btn-lg"><i class="far fa-trash-alt fa-1x"></i></button></a>
                 {{/if}}
             </div>
             <p class="mb-1"><b>Wann?</b> {{date}} um {{time}}</p>
@@ -20,7 +20,7 @@
             <p class="mb-1"><b>Wo?</b> Platte {{name}}, {{street}} {{hNr}}, {{plz}} Hannover</p>
             {{/each}}
             <p class="mb-1">{{description}}</p>
-            <p style="color: #587e8d"><small>erstellt von <u>{{username}}</u> ({{email}})</small></p>
+            <p style="color: #587e8d"><small>erstellt von <u>{{email}}</u></small></p>
             <input type="checkbox" id="toggle-teilnehmen"> Ich nehme teil!
         </div>
       </div>
@@ -39,13 +39,12 @@
               <h5 class="mb-1">{{name}} </h5> 
                   <!-- <i class="fas fa-edit" style="color: #587e8d"></i>-->
               {{#if admin}}
-              <a href="/startseite"><button type="button" id="deletePlatte" class="btn btn-danger btn-lg"><i class="far fa-trash-alt fa-2x"></i></button></a>
+              <a href="/startseite"><button type="button" id="deletePlatte" class="btn btn-danger btn-lg"><i class="far fa-trash-alt fa-1x"></i></button></a>
               {{/if}}
             </div>
             <p class="mb-1">Ort: {{street}} {{hNr}}, {{plz}} Hannover</p>
             <p class="mb-1">Anzahl Platten: {{count}} | Zustand: {{condition}}</p>
-            <p style="color: #587e8d"><small>erstellt von <u>{{username}}</u> ({{email}})</small></p>
-            <input type="checkbox" id="toggle-teilnehmen"> Ich nehme teil!
+            <p style="color: #587e8d"><small>erstellt von <u>{{email}}</u></small></p>
           </div>
           <br>
           {{/each}}
